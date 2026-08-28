@@ -82,7 +82,7 @@ export const Navbar: React.FC = () => {
           {freemium.isUnlocked ? (
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>Pass Active</span>
+              <span>{t('passActive')}</span>
             </div>
           ) : (
             <button
@@ -90,7 +90,7 @@ export const Navbar: React.FC = () => {
               className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-brand-500 to-emerald-600 hover:from-brand-400 hover:to-emerald-500 text-slate-950 text-xs font-bold shadow-md shadow-brand-500/20 hover:shadow-brand-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Unlock 500+ PDFs (€2.99)</span>
+              <span>{t('unlockPass')}</span>
             </button>
           )}
 

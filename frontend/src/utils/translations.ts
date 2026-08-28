@@ -2,10 +2,17 @@ export type Language = 'en' | 'it';
 
 export const translations = {
   en: {
+    // Navigation & Common
     searchPDFs: 'Search PDFs',
     docAudit: 'Document Audit',
     pricing: 'Pricing',
     privacy: 'Privacy',
+    unlockPass: 'Unlock 500+ PDFs (€2.99)',
+    passActive: 'Pass Active',
+    footerDesc: 'Fast, privacy-first batch PDF search and document audit tool. Your documents are processed 100% locally in your browser memory.',
+
+    // Hero & Dropzone
+    heroTag: '100% Client-Side Engine · Zero Server Uploads',
     heroTitle1: 'Search Multiple PDFs',
     heroTitle2: 'All at Once.',
     heroSub: 'Find words, phrases, and missing clauses across your documents in seconds. Stop opening files one by one.',
@@ -14,29 +21,104 @@ export const translations = {
     chooseFiles: 'Choose PDF Files',
     uploadFolder: 'Upload Entire Folder',
     browserBased: '100% Browser-Based. Documents never leave your computer.',
-    searchPlaceholder: 'Search keywords, exact phrases, or clauses (e.g. GDPR, liability, "Section 4.2")...',
-    searchBtn: 'Search',
+
+    // Features Cards (Home)
+    feat1Title: 'Instant Batch Indexing',
+    feat1Sub: 'Scan 50 or 500 PDF files in parallel using Web Workers directly inside your browser memory.',
+    feat2Title: 'Guaranteed Privacy',
+    feat2Sub: 'Your private contracts and confidential documents never leave your computer. No cloud storage risk.',
+    feat3Title: "Find What's Missing",
+    feat3Sub: 'Easily filter for documents that do NOT contain a mandatory clause and download them as a ZIP.',
+
+    // Search Bar & Options
     readyFiles: 'PDFs Ready in Memory',
     loadDifferent: 'Load Different Files',
+    searchPlaceholder: 'Search keywords, exact phrases, or clauses (e.g. GDPR, liability, "Section 4.2")...',
+    searchBtn: 'Search',
+    caseSensitive: 'Case sensitive',
+    wholeWord: 'Whole word only',
+    booleanSyntax: 'Boolean syntax (AND / OR)',
+    quickSuggestions: 'Quick suggestions:',
+
+    // Processing & Progress
+    indexingProgress: 'Indexing your PDF files locally...',
+    processingFile: 'Processing:',
+    parsingText: 'Parsing text layer',
+    scannedNoticeTitle: 'documents appear to be scanned / image-only PDFs.',
+    scannedNoticeSub: 'Standard text search cannot read image-only pages without an embedded text layer.',
+    exploreOcr: 'Explore OCR Upgrade',
+    encryptedNoticeTitle: 'documents are password-protected.',
+    encryptedNoticeSub: 'These files were skipped. Remove passwords from your PDFs and reload to search their text.',
+
+    // Search Results
     foundIn: 'Found in Documents',
     missingTerm: 'Missing Term',
     totalMatches: 'Total Match Occurrences',
+    tabAll: 'All',
+    tabFound: 'Found',
+    tabNotFound: 'Not Found',
+    tabIssues: 'Issues',
+    sortMatches: 'Sort: Matches',
+    sortName: 'Sort: Name',
     exportCSV: 'Export CSV',
     downloadZip: 'Download Matching PDFs (ZIP)',
     viewPDF: 'View PDF',
+    matchesCount: 'match',
+    matchesCountPlural: 'matches',
+    pagesWord: 'pages',
+    scannedBadge: 'Scanned PDF (No text layer)',
+    notFoundBadge: 'Not Found',
+    noMatchesFilter: 'No documents match this filter.',
+
+    // Audit Builder & Matrix
     auditTitle: 'Multi-Document Compliance Audit',
     auditSub: 'Check multiple requirements across your PDF files. Identify compliant files and flag documents needing manual legal review.',
+    criteriaTitle: 'Audit Criteria & Clauses',
+    criteriaSub: 'Define requirements to audit across all loaded documents simultaneously.',
     addReq: 'Add Requirement',
+    reqLabelPlaceholder: 'Requirement Label (e.g. GDPR)',
+    reqSearchPlaceholder: 'Search phrase / keywords to match...',
+    industryPresets: 'Industry Presets:',
     auditedDocs: 'Documents Audited',
     passedAll: '100% Compliant',
     needsReview: 'Missing Criteria',
     exportMatrixCSV: 'Export Matrix CSV',
+    downloadReviewZip: 'Download Review PDFs (ZIP)',
+    docFileHeader: 'Document File',
+    statusHeader: 'Status',
+    actionsHeader: 'Actions',
+    passedBadge: 'Passed',
+    reviewBadge: 'Review',
+    missingClause: 'Missing clause',
+
+    // Paywall Modal
+    paywallTag: 'ONE-TIME PASS · NO SUBSCRIPTION',
+    paywallTitle: 'Unlock Batch Processing',
+    paywallSub: 'Free plan includes 10 documents. Finish your search with a simple one-time unlock.',
+    tierStandard: 'Standard',
+    tierPro: 'Audit Pro',
+    tierPower: 'Power Batch',
+    unlockBtnText: 'Unlock Processing',
+    instantDemo: 'Or click here for Instant Free Demo Pass',
+    secureStripe: '100% Secure via Stripe',
+    noSignupNeeded: 'No account or sign up needed',
+
+    // FAQs
+    faqHeaderTag: 'Frequently Asked Questions',
+    faqHeaderTitle: 'Everything You Need to Know',
   },
   it: {
+    // Navigation & Common
     searchPDFs: 'Cerca nei PDF',
     docAudit: 'Audit Documenti',
     pricing: 'Prezzi',
     privacy: 'Privacy',
+    unlockPass: 'Sblocca 500+ PDF (€2.99)',
+    passActive: 'Pass Attivo',
+    footerDesc: 'Strumento di ricerca batch e audit PDF veloce e orientato alla privacy. I tuoi documenti sono elaborati al 100% localmente nella memoria del browser.',
+
+    // Hero & Dropzone
+    heroTag: 'Motore 100% Client-Side · Nessun Caricamento su Server',
     heroTitle1: 'Cerca in Più File PDF',
     heroTitle2: 'Contemporaneamente.',
     heroSub: 'Trova parole, frasi e clausole mancanti in tutti i tuoi documenti in pochi secondi. Smetti di aprirli uno alla volta.',
@@ -45,22 +127,90 @@ export const translations = {
     chooseFiles: 'Scegli File PDF',
     uploadFolder: 'Carica Intera Cartella',
     browserBased: '100% nel Browser. I documenti non lasciano mai il tuo computer.',
-    searchPlaceholder: 'Cerca parole chiave, frasi esatte o clausole (es. GDPR, recesso, "Articolo 4.2")...',
-    searchBtn: 'Cerca',
+
+    // Features Cards (Home)
+    feat1Title: 'Indicizzazione Batch Istantanea',
+    feat1Sub: 'Scansiona 50 o 500 PDF in parallelo usando Web Workers direttamente nella memoria del browser.',
+    feat2Title: 'Privacy Garantita',
+    feat2Sub: 'I tuoi contratti privati e documenti riservati non lasciano mai il computer. Nessun rischio cloud.',
+    feat3Title: 'Trova Ciò Che Manca',
+    feat3Sub: 'Filtra facilmente i documenti che NON contengono una clausola obbligatoria e scaricali in uno ZIP.',
+
+    // Search Bar & Options
     readyFiles: 'PDF Pronti in Memoria',
     loadDifferent: 'Carica Altri File',
+    searchPlaceholder: 'Cerca parole chiave, frasi esatte o clausole (es. GDPR, recesso, "Articolo 4.2")...',
+    searchBtn: 'Cerca',
+    caseSensitive: 'Maiuscole/Minuscole',
+    wholeWord: 'Solo parola intera',
+    booleanSyntax: 'Sintassi Booleana (AND / OR)',
+    quickSuggestions: 'Suggerimenti rapidi:',
+
+    // Processing & Progress
+    indexingProgress: 'Indicizzazione dei PDF in corso localmente...',
+    processingFile: 'Elaborazione:',
+    parsingText: 'Estrazione livello testo',
+    scannedNoticeTitle: 'documenti sembrano essere PDF scansionati / immagini.',
+    scannedNoticeSub: 'La ricerca testuale standard non legge le pagine scansionate senza un livello di testo.',
+    exploreOcr: 'Scopri Upgrade OCR',
+    encryptedNoticeTitle: 'documenti sono protetti da password.',
+    encryptedNoticeSub: 'Questi file sono stati saltati. Rimuovi la password per cercarne il testo.',
+
+    // Search Results
     foundIn: 'Trovato nei Documenti',
     missingTerm: 'Termine Mancante',
     totalMatches: 'Occorrenze Totali Trovate',
+    tabAll: 'Tutti',
+    tabFound: 'Trovati',
+    tabNotFound: 'Non Trovati',
+    tabIssues: 'Problemi',
+    sortMatches: 'Ordina: Occorrenze',
+    sortName: 'Ordina: Nome',
     exportCSV: 'Esporta CSV',
     downloadZip: 'Scarica PDF Trovati (ZIP)',
     viewPDF: 'Vedi PDF',
+    matchesCount: 'occorrenza',
+    matchesCountPlural: 'occorrenze',
+    pagesWord: 'pagine',
+    scannedBadge: 'PDF Scansionato (No testo)',
+    notFoundBadge: 'Non Trovato',
+    noMatchesFilter: 'Nessun documento corrisponde a questo filtro.',
+
+    // Audit Builder & Matrix
     auditTitle: 'Audit di Conformità Multi-Documento',
     auditSub: 'Verifica più requisiti contemporaneamente nei tuoi file PDF. Identifica i file conformi e segnala quelli che richiedono controllo.',
+    criteriaTitle: 'Criteri di Audit & Clausole',
+    criteriaSub: 'Definisci i requisiti da verificare contemporaneamente in tutti i documenti caricati.',
     addReq: 'Aggiungi Requisito',
+    reqLabelPlaceholder: 'Etichetta Requisito (es. GDPR)',
+    reqSearchPlaceholder: 'Frase da cercare / parole chiave...',
+    industryPresets: 'Preset di Settore:',
     auditedDocs: 'Documenti Analizzati',
     passedAll: '100% Conforme',
     needsReview: 'Criteri Mancanti',
     exportMatrixCSV: 'Esporta Matrice CSV',
+    downloadReviewZip: 'Scarica PDF da Revisionare (ZIP)',
+    docFileHeader: 'File Documento',
+    statusHeader: 'Stato',
+    actionsHeader: 'Azioni',
+    passedBadge: 'Superato',
+    reviewBadge: 'Revisione',
+    missingClause: 'Clausola mancante',
+
+    // Paywall Modal
+    paywallTag: 'PASS ONE-TIME · ZERO ABBONAMENTO',
+    paywallTitle: 'Sblocca Elaborazione Batch',
+    paywallSub: 'Il piano gratuito include 10 documenti. Sblocca tutto con un semplice acquisto una tantum.',
+    tierStandard: 'Standard',
+    tierPro: 'Audit Pro',
+    tierPower: 'Power Batch',
+    unlockBtnText: 'Sblocca Elaborazione',
+    instantDemo: 'Oppure clicca qui per il Pass Demo Gratuito',
+    secureStripe: 'Sicuro al 100% tramite Stripe',
+    noSignupNeeded: 'Nessun account richiesto',
+
+    // FAQs
+    faqHeaderTag: 'Domande Frequenti',
+    faqHeaderTitle: 'Tutto Quello Che Devi Sapere',
   }
 };

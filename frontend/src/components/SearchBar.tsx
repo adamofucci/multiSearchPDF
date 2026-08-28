@@ -118,7 +118,7 @@ export const SearchBar: React.FC = () => {
               onChange={(e) => setSearchOptions(prev => ({ ...prev, caseSensitive: e.target.checked }))}
               className="rounded bg-slate-950 border-slate-700 text-brand-500 focus:ring-brand-500/30 focus:ring-offset-slate-900"
             />
-            <span>Case sensitive</span>
+            <span>{t('caseSensitive')}</span>
           </label>
 
           <label className="flex items-center gap-2 cursor-pointer select-none">
@@ -128,7 +128,7 @@ export const SearchBar: React.FC = () => {
               onChange={(e) => setSearchOptions(prev => ({ ...prev, wholeWord: e.target.checked }))}
               className="rounded bg-slate-950 border-slate-700 text-brand-500 focus:ring-brand-500/30 focus:ring-offset-slate-900"
             />
-            <span>Whole word only</span>
+            <span>{t('wholeWord')}</span>
           </label>
 
           <label className="flex items-center gap-2 cursor-pointer select-none">
@@ -138,7 +138,7 @@ export const SearchBar: React.FC = () => {
               onChange={(e) => setSearchOptions(prev => ({ ...prev, useBoolean: e.target.checked }))}
               className="rounded bg-slate-950 border-slate-700 text-brand-500 focus:ring-brand-500/30 focus:ring-offset-slate-900"
             />
-            <span>Boolean syntax (<code className="text-brand-300 font-mono">AND</code> / <code className="text-brand-300 font-mono">OR</code>)</span>
+            <span>{t('booleanSyntax')}</span>
           </label>
         </div>
       )}
@@ -148,7 +148,7 @@ export const SearchBar: React.FC = () => {
         <div className="flex items-center gap-2 flex-wrap text-xs text-slate-400 pt-1">
           <span className="flex items-center gap-1 text-slate-500">
             <Clock className="w-3 h-3" />
-            Quick suggestions:
+            {t('quickSuggestions')}
           </span>
           {recentSearches.map((term) => (
             <button

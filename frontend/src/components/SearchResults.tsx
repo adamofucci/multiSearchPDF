@@ -126,7 +126,7 @@ export const SearchResults: React.FC = () => {
               activeTab === 'all' ? 'bg-slate-800 text-white shadow' : 'text-slate-400 hover:text-white'
             }`}
           >
-            All ({searchResults.length})
+            {t('tabAll')} ({searchResults.length})
           </button>
           <button
             onClick={() => setActiveTab('found')}
@@ -135,7 +135,7 @@ export const SearchResults: React.FC = () => {
             }`}
           >
             <CheckCircle2 className="w-3.5 h-3.5" />
-            Found ({foundResults.length})
+            {t('tabFound')} ({foundResults.length})
           </button>
           <button
             onClick={() => setActiveTab('not_found')}
@@ -144,7 +144,7 @@ export const SearchResults: React.FC = () => {
             }`}
           >
             <XCircle className="w-3.5 h-3.5" />
-            Not Found ({notFoundResults.length})
+            {t('tabNotFound')} ({notFoundResults.length})
           </button>
           {issuesResults.length > 0 && (
             <button
@@ -153,7 +153,7 @@ export const SearchResults: React.FC = () => {
                 activeTab === 'issues' ? 'bg-amber-950 border border-amber-500/30' : ''
               }`}
             >
-              Issues ({issuesResults.length})
+              {t('tabIssues')} ({issuesResults.length})
             </button>
           )}
         </div>
@@ -166,7 +166,7 @@ export const SearchResults: React.FC = () => {
             className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 transition-colors"
           >
             <ArrowUpDown className="w-3.5 h-3.5 text-brand-400" />
-            <span>Sort: {sortBy === 'matches' ? 'Matches' : 'Name'} ({sortOrder.toUpperCase()})</span>
+            <span>{sortBy === 'matches' ? t('sortMatches') : t('sortName')} ({sortOrder.toUpperCase()})</span>
           </button>
 
           {/* CSV Export */}
@@ -175,7 +175,7 @@ export const SearchResults: React.FC = () => {
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-colors"
           >
             <Download className="w-3.5 h-3.5 text-brand-400" />
-            <span>Export CSV</span>
+            <span>{t('exportCSV')}</span>
           </button>
 
           {/* Download Matching ZIP */}
@@ -187,7 +187,7 @@ export const SearchResults: React.FC = () => {
               title="Download all PDFs containing the search term as a ZIP"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>{isZipping ? 'Zipping...' : `Download ${foundResults.length} Matching PDFs (ZIP)`}</span>
+              <span>{isZipping ? 'Zipping...' : t('downloadZip')}</span>
             </button>
           )}
         </div>
@@ -197,7 +197,7 @@ export const SearchResults: React.FC = () => {
       <div className="space-y-3">
         {filteredResults.length === 0 ? (
           <div className="text-center py-12 bg-slate-900/40 border border-slate-800 rounded-2xl">
-            <p className="text-slate-400 text-sm">No documents match this filter.</p>
+            <p className="text-slate-400 text-sm">{t('noMatchesFilter')}</p>
           </div>
         ) : (
           filteredResults.map((result) => {
@@ -225,7 +225,7 @@ export const SearchResults: React.FC = () => {
                         {result.documentName}
                       </h4>
                       <p className="text-xs text-slate-400 mt-0.5">
-                        {correspondingDoc?.totalPages ? `${correspondingDoc.totalPages} pages` : 'Document'} · {(result.rawFile.size / 1024).toFixed(0)} KB
+                        {correspondingDoc?.totalPages ? `${correspondingDoc.totalPages} ${t('pagesWord')}` : 'Document'} · {(result.rawFile.size / 1024).toFixed(0)} KB
                       </p>
                     </div>
                   </div>
@@ -236,7 +236,7 @@ export const SearchResults: React.FC = () => {
                       <div className="flex items-center gap-2">
                         <span className="px-2.5 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-bold flex items-center gap-1">
                           <CheckCircle2 className="w-3.5 h-3.5" />
-                          {result.totalMatches} match{result.totalMatches > 1 ? 'es' : ''} (pages {result.pagesFound.join(', ')})
+                          {result.totalMatches} {result.totalMatches > 1 ? t('matchesCountPlural') : t('matchesCount')} ({t('pagesWord')} {result.pagesFound.join(', ')})
                         </span>
                         {correspondingDoc && (
                           <button
@@ -245,19 +245,19 @@ export const SearchResults: React.FC = () => {
                             className="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 flex items-center gap-1 transition-colors"
                           >
                             <Eye className="w-3.5 h-3.5 text-brand-400" />
-                            View PDF
+                            {t('viewPDF')}
                           </button>
                         )}
                       </div>
                     ) : result.isScanned ? (
                       <span className="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold flex items-center gap-1">
                         <AlertCircle className="w-3.5 h-3.5" />
-                        Scanned PDF (No text layer)
+                        {t('scannedBadge')}
                       </span>
                     ) : (
                       <span className="px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 text-xs font-medium flex items-center gap-1">
                         <XCircle className="w-3.5 h-3.5" />
-                        Not Found
+                        {t('notFoundBadge')}
                       </span>
                     )}
                   </div>

@@ -79,9 +79,9 @@ export const HomePage: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center">
                 <Zap className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-white">Instant Batch Indexing</h3>
+              <h3 className="text-base font-bold text-white">{t('feat1Title')}</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Scan 50 or 500 PDF files in parallel using Web Workers directly inside your browser memory.
+                {t('feat1Sub')}
               </p>
             </div>
 
@@ -89,9 +89,9 @@ export const HomePage: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center">
                 <Shield className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-white">Guaranteed Privacy</h3>
+              <h3 className="text-base font-bold text-white">{t('feat2Title')}</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Your private contracts and confidential documents never leave your computer. No cloud storage risk.
+                {t('feat2Sub')}
               </p>
             </div>
 
@@ -99,9 +99,9 @@ export const HomePage: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center">
                 <Layers className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-white">Find What's Missing</h3>
+              <h3 className="text-base font-bold text-white">{t('feat3Title')}</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Easily filter for documents that do NOT contain a mandatory clause and download them as a ZIP.
+                {t('feat3Sub')}
               </p>
             </div>
           </div>

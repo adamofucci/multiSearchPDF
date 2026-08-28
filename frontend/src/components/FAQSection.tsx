@@ -34,26 +34,54 @@ const FAQS: FAQItem[] = [
 ];
 
 export const FAQSection: React.FC = () => {
+  const { t, lang } = useDocuments();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (idx: number) => {
     setOpenIndex(openIndex === idx ? null : idx);
   };
 
+  const currentFaqs = lang === 'it' ? [
+    {
+      q: 'I miei file PDF vengono caricati su un server?',
+      a: 'No, mai. DocSweep viene eseguito al 100% nel tuo browser. I tuoi contratti riservati e dati personali non lasciano mai il tuo computer.',
+    },
+    {
+      q: 'Quanti PDF posso cercare contemporaneamente?',
+      a: 'Puoi cercare da 1 a oltre 500 PDF alla volta. Il piano gratuito ti permette di cercare fino a 10 PDF senza costi. Per volumi maggiori puoi sbloccare un pass una tantum.',
+    },
+    {
+      q: 'Cos\'è la funzione "Document Audit"?',
+      a: 'L\'audit ti permette di definire più requisiti contemporaneamente (es. "GDPR", "Diritto di recesso", "Rinnovo automatico") e vedere una tabella con spunte ✓/✗ per capire subito quali documenti sono conformi e quali richiedono controllo.',
+    },
+    {
+      q: 'Posso cercare in file PDF scansionati?',
+      a: 'DocSweep rileva i PDF scansionati (senza testo selezionabile) e te li segnala. La ricerca funziona istantaneamente su tutti i PDF digitali tradizionali.',
+    },
+    {
+      q: 'Posso scaricare i PDF trovati in un archivio ZIP?',
+      a: 'Sì! Puoi scaricare in un unico file ZIP generato nel tuo browser tutti i PDF in cui è stata trovata la parola oppure tutti quelli a cui manca una clausola.',
+    },
+    {
+      q: 'Devo creare un account o un abbonamento?',
+      a: 'Nessun account, nessuna password, nessun abbonamento ricorrente. Paghi solo se hai bisogno di sbloccare elaborazioni batch elevate.',
+    },
+  ] : FAQS;
+
   return (
     <section className="w-full max-w-4xl mx-auto py-16 px-4">
       <div className="text-center mb-10">
         <div className="inline-flex items-center gap-1 text-brand-400 text-xs font-bold uppercase tracking-wider mb-2">
           <HelpCircle className="w-4 h-4" />
-          <span>Frequently Asked Questions</span>
+          <span>{t('faqHeaderTag')}</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-          Everything You Need to Know
+          {t('faqHeaderTitle')}
         </h2>
       </div>
 
       <div className="space-y-3">
-        {FAQS.map((faq, idx) => {
+        {currentFaqs.map((faq, idx) => {
           const isOpen = openIndex === idx;
           return (
             <div

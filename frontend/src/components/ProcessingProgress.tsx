@@ -3,7 +3,7 @@ import { Loader2, AlertTriangle, Lock, XCircle } from 'lucide-react';
 import { useDocuments } from '../context/DocumentContext';
 
 export const ProcessingProgress: React.FC = () => {
-  const { isProcessing, progress, cancelProcessing, scannedCount, encryptedCount, openPaywall } = useDocuments();
+  const { isProcessing, progress, cancelProcessing, scannedCount, encryptedCount, openPaywall, t } = useDocuments();
 
   if (!isProcessing && scannedCount === 0 && encryptedCount === 0) {
     return null;
@@ -19,11 +19,11 @@ export const ProcessingProgress: React.FC = () => {
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-2 text-white font-semibold">
               <Loader2 className="w-4 h-4 text-brand-400 animate-spin" />
-              <span>Indexing your PDF files locally...</span>
+              <span>{t('indexingProgress')}</span>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-brand-400 font-mono font-bold text-xs bg-brand-500/10 px-2 py-0.5 rounded border border-brand-500/20">
-                {progress.current} / {progress.total} files ({percentage}%)
+                {progress.current} / {progress.total} ({percentage}%)
               </span>
               <button
                 type="button"
@@ -47,8 +47,8 @@ export const ProcessingProgress: React.FC = () => {
 
           {/* Current file name */}
           <div className="flex items-center justify-between text-xs text-slate-400 font-mono truncate">
-            <span className="truncate max-w-[80%]">Processing: {progress.filename}</span>
-            <span>Parsing text layer</span>
+            <span className="truncate max-w-[80%]">{t('processingFile')} {progress.filename}</span>
+            <span>{t('parsingText')}</span>
           </div>
         </div>
       )}
@@ -60,10 +60,10 @@ export const ProcessingProgress: React.FC = () => {
             <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
             <div className="text-xs sm:text-sm">
               <span className="font-semibold text-amber-300">
-                {scannedCount} document{scannedCount > 1 ? 's' : ''} appear to be scanned / image-only PDFs.
+                {scannedCount} {t('scannedNoticeTitle')}
               </span>
               <p className="text-amber-200/80 mt-0.5">
-                Standard text search cannot read image-only pages without an embedded text layer.
+                {t('scannedNoticeSub')}
               </p>
             </div>
           </div>
@@ -72,7 +72,7 @@ export const ProcessingProgress: React.FC = () => {
             onClick={openPaywall}
             className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 hover:bg-amber-300 transition-colors flex-shrink-0"
           >
-            Explore OCR Upgrade
+            {t('exploreOcr')}
           </button>
         </div>
       )}
@@ -83,10 +83,10 @@ export const ProcessingProgress: React.FC = () => {
           <Lock className="w-5 h-5 text-rose-400 flex-shrink-0" />
           <div className="text-xs sm:text-sm">
             <span className="font-semibold text-rose-300">
-              {encryptedCount} document{encryptedCount > 1 ? 's' : ''} are password-protected.
+              {encryptedCount} {t('encryptedNoticeTitle')}
             </span>
             <p className="text-rose-200/80 mt-0.5">
-              These files were skipped. Remove passwords from your PDFs and reload to search their text.
+              {t('encryptedNoticeSub')}
             </p>
           </div>
         </div>

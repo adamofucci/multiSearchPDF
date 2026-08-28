@@ -8,7 +8,7 @@ import { AuditBuilder } from '../components/AuditBuilder';
 import { AuditMatrix } from '../components/AuditMatrix';
 
 export const AuditPage: React.FC = () => {
-  const { documents } = useDocuments();
+  const { documents, t } = useDocuments();
 
   return (
     <div className="min-h-screen py-8 sm:py-12">
@@ -28,10 +28,10 @@ export const AuditPage: React.FC = () => {
             <span>DOCUMENT AUDIT ENGINE</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            Multi-Document Compliance Audit
+            {t('auditTitle')}
           </h1>
           <p className="text-slate-400 text-sm">
-            Check multiple requirements across your PDF files. Identify compliant files and flag documents needing manual legal review.
+            {t('auditSub')}
           </p>
         </div>
 

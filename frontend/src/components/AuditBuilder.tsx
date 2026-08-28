@@ -9,7 +9,8 @@ export const AuditBuilder: React.FC = () => {
     removeAuditRequirement, 
     updateAuditRequirement, 
     runAudit,
-    documents 
+    documents,
+    t 
   } = useDocuments();
 
   const presets = [
@@ -61,10 +62,10 @@ export const AuditBuilder: React.FC = () => {
         <div>
           <h3 className="text-lg font-bold text-white flex items-center gap-2">
             <CheckSquare className="w-5 h-5 text-brand-400" />
-            Audit Criteria & Clauses
+            {t('criteriaTitle')}
           </h3>
           <p className="text-xs text-slate-400 mt-1">
-            Define requirements to audit across all {documents.length} loaded documents simultaneously.
+            {t('criteriaSub')}
           </p>
         </div>
 
@@ -75,7 +76,7 @@ export const AuditBuilder: React.FC = () => {
           className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 flex items-center gap-1.5 transition-colors self-start sm:self-auto"
         >
           <Plus className="w-4 h-4 text-brand-400" />
-          Add Requirement
+          {t('addReq')}
         </button>
       </div>
 
@@ -89,7 +90,7 @@ export const AuditBuilder: React.FC = () => {
                 type="text"
                 value={req.label}
                 onChange={(e) => updateAuditRequirement(req.id, e.target.value, req.query)}
-                placeholder="Requirement Label (e.g. GDPR)"
+                placeholder={t('reqLabelPlaceholder')}
                 className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white focus:border-brand-400 focus:outline-none"
               />
             </div>
@@ -99,7 +100,7 @@ export const AuditBuilder: React.FC = () => {
                 type="text"
                 value={req.query}
                 onChange={(e) => updateAuditRequirement(req.id, req.label, e.target.value)}
-                placeholder="Search phrase / keywords to match..."
+                placeholder={t('reqSearchPlaceholder')}
                 className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white focus:border-brand-400 focus:outline-none"
               />
 
@@ -122,7 +123,7 @@ export const AuditBuilder: React.FC = () => {
       <div className="pt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-2 text-xs">
         <span className="text-slate-400 font-medium flex items-center gap-1">
           <Sparkles className="w-3 h-3 text-brand-400" />
-          Industry Presets:
+          {t('industryPresets')}
         </span>
         {presets.map((preset) => (
           <button

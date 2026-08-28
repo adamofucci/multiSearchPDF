@@ -5,7 +5,7 @@ import { useDocuments } from '../context/DocumentContext';
 import { getPaymentLinkForPlan } from '../utils/freemium';
 
 export const PaywallModal: React.FC = () => {
-  const { isPaywallOpen, closePaywall, unlockWithToken, rawFiles } = useDocuments();
+  const { isPaywallOpen, closePaywall, unlockWithToken, rawFiles, t } = useDocuments();
   const [selectedPlan, setSelectedPlan] = useState<'batch_100' | 'batch_500' | 'batch_pro'>('batch_100');
   const [isDemoUnlocking, setIsDemoUnlocking] = useState(false);
 
@@ -53,13 +53,13 @@ export const PaywallModal: React.FC = () => {
         <div className="text-center max-w-lg mx-auto mb-8">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-bold mb-3">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>ONE-TIME PASS · NO SUBSCRIPTION</span>
+            <span>{t('paywallTag')}</span>
           </div>
           <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Unlock Batch Processing
+            {t('paywallTitle')}
           </h3>
           <p className="text-slate-400 text-sm mt-2">
-            You loaded {rawFiles.length > 0 ? `${rawFiles.length} PDFs` : 'multiple PDFs'}. Free plan includes 10 documents. Finish your search with a simple one-time unlock.
+            {t('paywallSub')}
           </p>
         </div>
 
