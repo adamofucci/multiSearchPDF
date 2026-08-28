@@ -16,6 +16,8 @@ services:
         generateValue: true
       - key: STRIPE_SECRET_KEY
         sync: false
+      - key: STRIPE_API_KEY
+        sync: false
       - key: STRIPE_WEBHOOK_SECRET
         sync: false
       - key: ALLOWED_ORIGINS

@@ -1,5 +1,10 @@
 import os
+from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
+
+# Load .env file if present
+load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env"))
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "DocSweep"
@@ -7,7 +12,7 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: str = os.getenv("ALLOWED_ORIGINS", "*")
     
     # Stripe Configuration
-    STRIPE_SECRET_KEY: str = os.getenv("STRIPE_SECRET_KEY", "")
+    STRIPE_SECRET_KEY: str = os.getenv("STRIPE_SECRET_KEY", os.getenv("STRIPE_API_KEY", ""))
     STRIPE_WEBHOOK_SECRET: str = os.getenv("STRIPE_WEBHOOK_SECRET", "")
     
     # JWT Session Token Secret (used for stateless payment verification)
@@ -20,5 +25,6 @@ class Settings(BaseSettings):
     
     class Config:
         case_sensitive = True
+        env_file = ".env"
 
 settings = Settings()
