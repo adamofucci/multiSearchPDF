@@ -10,7 +10,8 @@ export const SearchBar: React.FC = () => {
     setSearchOptions, 
     runSearch, 
     documents, 
-    resetAll 
+    resetAll,
+    t 
   } = useDocuments();
 
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -43,7 +44,7 @@ export const SearchBar: React.FC = () => {
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-brand-400"></span>
           <span className="text-sm font-semibold text-white">
-            {documents.length} PDF{documents.length > 1 ? 's' : ''} Ready in Memory
+            {documents.length} {t('readyFiles')}
           </span>
         </div>
         <button
@@ -52,7 +53,7 @@ export const SearchBar: React.FC = () => {
           className="text-xs text-slate-400 hover:text-slate-200 transition-colors flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700"
         >
           <RotateCcw className="w-3.5 h-3.5" />
-          Load Different Files
+          {t('loadDifferent')}
         </button>
       </div>
 
@@ -66,7 +67,7 @@ export const SearchBar: React.FC = () => {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search keywords, exact phrases, or clauses (e.g. GDPR, liability, 'Section 4.2')..."
+            placeholder={t('searchPlaceholder')}
             className="w-full pl-11 pr-10 py-3.5 bg-slate-950 border border-slate-700 focus:border-brand-400 focus:ring-2 focus:ring-brand-500/20 rounded-xl text-white placeholder-slate-500 text-sm font-medium transition-all"
             autoFocus
           />
@@ -90,7 +91,7 @@ export const SearchBar: React.FC = () => {
             className="flex-1 sm:flex-none px-6 py-3.5 bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-sm rounded-xl shadow-lg shadow-brand-500/20 hover:shadow-brand-500/30 transition-all flex items-center justify-center gap-2"
           >
             <Search className="w-4 h-4 stroke-[2.5]" />
-            <span>Search</span>
+            <span>{t('searchBtn')}</span>
           </button>
           <button
             type="button"

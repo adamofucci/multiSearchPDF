@@ -9,8 +9,8 @@ import {
 } from '../types';
 import { parseMultiplePDFs } from '../utils/pdfWorker';
 import { searchDocuments, buildSearchRegex } from '../utils/search';
-import { getStoredFreemiumState, saveFreemiumState, FREE_PDF_LIMIT } from '../utils/freemium';
 import { trackEvent } from '../utils/analytics';
+import { translations, Language } from '../utils/translations';
 
 interface DocumentContextType {
   rawFiles: File[];
@@ -27,7 +27,10 @@ interface DocumentContextType {
   freemium: FreemiumState;
   isPaywallOpen: boolean;
   selectedPreview: { doc: ParsedDocument; pageNumber?: number; highlightQuery?: string } | null;
-  
+  lang: 'en' | 'it';
+  setLang: (l: 'en' | 'it') => void;
+  t: (key: keyof typeof translations['en']) => string;
+
   // Actions
   loadFiles: (files: File[]) => void;
   cancelProcessing: () => void;
@@ -76,6 +79,11 @@ export const DocumentProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [freemium, setFreemium] = useState<FreemiumState>(getStoredFreemiumState());
   const [isPaywallOpen, setIsPaywallOpen] = useState<boolean>(false);
   const [selectedPreview, setSelectedPreview] = useState<{ doc: ParsedDocument; pageNumber?: number; highlightQuery?: string } | null>(null);
+  const [lang, setLang] = useState<Language>('en');
+
+  const t = useCallback((key: keyof typeof translations['en']) => {
+    return translations[lang][key] || translations['en'][key] || key;
+  }, [lang]);
 
   // Compute counts
   const scannedCount = documents.filter(d => d.isScanned).length;
@@ -292,6 +300,9 @@ export const DocumentProvider: React.FC<{ children: ReactNode }> = ({ children }
         freemium,
         isPaywallOpen,
         selectedPreview,
+        lang,
+        setLang,
+        t,
         loadFiles,
         cancelProcessing,
         setQuery,

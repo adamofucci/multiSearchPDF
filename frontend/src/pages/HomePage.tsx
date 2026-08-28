@@ -11,7 +11,7 @@ import { FAQSection } from '../components/FAQSection';
 import { verifyStripeSession } from '../utils/freemium';
 
 export const HomePage: React.FC = () => {
-  const { documents, unlockWithToken } = useDocuments();
+  const { documents, unlockWithToken, t } = useDocuments();
   const [searchParams] = useSearchParams();
 
   // Check if returning from Stripe checkout session
@@ -46,14 +46,14 @@ export const HomePage: React.FC = () => {
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-              Search Multiple PDFs <br className="hidden sm:inline" />
+              {t('heroTitle1')} <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-brand-400 to-emerald-400 bg-clip-text text-transparent">
-                All at Once.
+                {t('heroTitle2')}
               </span>
             </h1>
 
             <p className="text-slate-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-              Find words, phrases, and missing clauses across your documents in seconds. Stop opening files one by one.
+              {t('heroSub')}
             </p>
           </div>
         )}

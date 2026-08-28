@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, ShieldCheck, Sparkles, FileText, CheckCircle2 } from 'lucide-react';
+import { Search, Sparkles, FileText, CheckCircle2, Globe } from 'lucide-react';
 import { useDocuments } from '../context/DocumentContext';
 
 export const Navbar: React.FC = () => {
   const location = useLocation();
-  const { freemium, openPaywall, documents } = useDocuments();
+  const { freemium, openPaywall, documents, lang, setLang, t } = useDocuments();
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
             }`}
           >
             <Search className="w-4 h-4" />
-            Search PDFs
+            {t('searchPDFs')}
           </Link>
           <Link
             to="/audit"
@@ -43,7 +43,7 @@ export const Navbar: React.FC = () => {
             }`}
           >
             <FileText className="w-4 h-4" />
-            Document Audit
+            {t('docAudit')}
             <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-emerald-500/20 text-emerald-300 font-semibold">
               PRO
             </span>
@@ -54,7 +54,7 @@ export const Navbar: React.FC = () => {
               location.pathname === '/pricing' ? 'text-brand-400' : 'text-slate-400'
             }`}
           >
-            Pricing
+            {t('pricing')}
           </Link>
           <Link
             to="/privacy"
@@ -62,16 +62,27 @@ export const Navbar: React.FC = () => {
               location.pathname === '/privacy' ? 'text-brand-400' : 'text-slate-400'
             }`}
           >
-            Privacy
+            {t('privacy')}
           </Link>
         </nav>
 
-        {/* Right CTA / Session Indicator */}
+        {/* Right CTA / Language Switcher / Session Indicator */}
         <div className="flex items-center gap-3">
+          {/* Minimal Language Switcher */}
+          <button
+            type="button"
+            onClick={() => setLang(lang === 'en' ? 'it' : 'en')}
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-semibold transition-colors"
+            title={lang === 'en' ? 'Passa all\'Italiano' : 'Switch to English'}
+          >
+            <Globe className="w-3.5 h-3.5 text-brand-400" />
+            <span>{lang.toUpperCase()}</span>
+          </button>
+
           {freemium.isUnlocked ? (
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>Unlimited Pass Active</span>
+              <span>Pass Active</span>
             </div>
           ) : (
             <button

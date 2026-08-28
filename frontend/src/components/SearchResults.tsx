@@ -14,7 +14,7 @@ import { DocumentSearchResult } from '../types';
 import { exportSearchToCSV, exportSearchToJSON, downloadFilesAsZip } from '../utils/export';
 
 export const SearchResults: React.FC = () => {
-  const { searchResults, query, documents, openPreview, openPaywall, freemium } = useDocuments();
+  const { searchResults, query, documents, openPreview, openPaywall, freemium, t } = useDocuments();
   const [activeTab, setActiveTab] = useState<'all' | 'found' | 'not_found' | 'issues'>('all');
   const [sortBy, setSortBy] = useState<'matches' | 'name'>('matches');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
@@ -73,7 +73,7 @@ export const SearchResults: React.FC = () => {
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Found in Documents</span>
+            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{t('foundIn')}</span>
             <CheckCircle2 className="w-4 h-4 text-brand-400" />
           </div>
           <div className="mt-2 flex items-baseline gap-2">
@@ -92,7 +92,7 @@ export const SearchResults: React.FC = () => {
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Missing Term</span>
+            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{t('missingTerm')}</span>
             <XCircle className="w-4 h-4 text-slate-400" />
           </div>
           <div className="mt-2 flex items-baseline gap-2">
@@ -104,7 +104,7 @@ export const SearchResults: React.FC = () => {
         {/* Total Occurrences */}
         <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Match Occurrences</span>
+            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{t('totalMatches')}</span>
             <Layers className="w-4 h-4 text-emerald-400" />
           </div>
           <div className="mt-2 flex items-baseline gap-2">

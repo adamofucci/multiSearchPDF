@@ -4,7 +4,7 @@ import JSZip from 'jszip';
 import { useDocuments } from '../context/DocumentContext';
 
 export const DropZone: React.FC = () => {
-  const { loadFiles, isProcessing } = useDocuments();
+  const { loadFiles, isProcessing, t } = useDocuments();
   const [isDragActive, setIsDragActive] = useState(false);
   const [zipExtracting, setZipExtracting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -140,10 +140,10 @@ export const DropZone: React.FC = () => {
 
         {/* Text */}
         <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-          {zipExtracting ? 'Unpacking ZIP archive...' : 'Drop your PDFs or ZIP folder here'}
+          {zipExtracting ? 'Unpacking ZIP archive...' : t('dropTitle')}
         </h3>
         <p className="text-slate-400 text-sm max-w-md mx-auto mb-6">
-          Drag & drop dozens of PDF documents, a zipped folder, or choose from your computer.
+          {t('dropSub')}
         </p>
 
         {/* Buttons Action Group */}
@@ -154,7 +154,7 @@ export const DropZone: React.FC = () => {
             className="px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-sm shadow-lg shadow-brand-500/20 hover:shadow-brand-500/30 transition-all flex items-center gap-2"
           >
             <FileText className="w-4 h-4" />
-            Choose PDF Files
+            {t('chooseFiles')}
           </button>
 
           <button
@@ -163,14 +163,14 @@ export const DropZone: React.FC = () => {
             className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm border border-slate-700 hover:border-slate-600 transition-all flex items-center gap-2"
           >
             <FolderPlus className="w-4 h-4 text-brand-400" />
-            Upload Entire Folder
+            {t('uploadFolder')}
           </button>
         </div>
 
         {/* Privacy Pill */}
         <div className="mt-8 flex items-center gap-2 text-xs font-medium text-slate-400 bg-slate-950/80 px-4 py-1.5 rounded-full border border-slate-800">
           <ShieldCheck className="w-4 h-4 text-emerald-400" />
-          <span>🔒 100% Browser-Based. Documents never leave your computer.</span>
+          <span>🔒 {t('browserBased')}</span>
         </div>
       </div>
 
