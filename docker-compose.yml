@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docsweep-app
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - ENVIRONMENT=production
+      - JWT_SECRET=dev-jwt-secret-replace-with-secure-key
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
+      - FREE_PDF_LIMIT=10
+    restart: unless-stopped
