@@ -9,6 +9,7 @@ import {
 } from '../types';
 import { parseMultiplePDFs } from '../utils/pdfWorker';
 import { searchDocuments, buildSearchRegex } from '../utils/search';
+import { getStoredFreemiumState, saveFreemiumState, FREE_PDF_LIMIT } from '../utils/freemium';
 import { trackEvent } from '../utils/analytics';
 import { translations, Language } from '../utils/translations';
 
